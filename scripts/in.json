@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Steel table-A5",
+    "supplier": "Thai Nguyen Steel Factory",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPDhCBM9lgjTzmfQIqh1c3zKhVc-2bZ1CnQ&s",
+    "description": "Easy to clean, easy to move, light but sturdy, beautiful and durable. Warranty up to 50 years.",
+    "product_location": "Ca Mau",
+    "price": 2999
+  },
+  {
+    "title": "Wooden table-M3",
+    "supplier": "Dong Nai Wood Factory",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS7bChFr1ZolGNAFXDZMIosOJ9QUjWD6R3hsg&s",
+    "description": "4-legged wooden table, compact. Suitable for living room, office.",
+    "product_location": "Dong Nai",
+    "price": 3999
+  },
+  {
+    "title": "Wooden chair-A9",
+    "supplier": "Dong Nai Wood Factory",
+    "image_url": "https://gotrangtri.vn/wp-content/uploads/2017/07/ghe-go-soi-3-nan-mat-go-ghc-710-1.jpg",
+    "description": "4-legged wooden chair. Suitable for coffee shops, offices.",
+    "product_location": "Dong Nai",
+    "price": 2999
+  },
+  {
+    "title": "Swivel chair-M1",
+    "supplier": "Thai Nguyen Steel Factory",
+    "image_url": "https://cellbell.in/cdn/shop/files/Grazia-C57-Boss-Chair-CellBell-1653546078.png?v=1715083580",
+    "description": "Swivel chair for businesses and companies. Compact, convenient, easy to clean. 2-year warranty.",
+    "product_location": "Ca Mau",
+    "price": 4599
+  },
+  {
+    "title": "Bed lamp-N3",
+    "supplier": "Dong Nai Furniture Manufacturing Company.",
+    "image_url": "https://down-vn.img.susercontent.com/file/sg-11134201-7qver-lj6xm24x9xl592",
+    "description": "Cute night lamp for students, adjustable brightness of 3 different colors.",
+    "product_location": "Dong Nai",
+    "price": 2000
+  },
+  {
+    "title": "Bed lamp-N2",
+    "supplier": "Dong Nai Furniture Manufacturing Company.",
+    "image_url": "https://denngu.vn/uploads/thumb/db04-254-4.jpg",
+    "description": "5 different color lights, energy saving, 1-year warranty.",
+    "product_location": "Dong Nai",
+    "price": 1599
+  },
+  {
+    "title": "Sofa-H1",
+    "supplier": "Di An Furniture Company.",
+    "image_url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR_tYFcfV3BzyRRU3zT0GwDXJZ5Qq-3JNRXbQ&s",
+    "description": "L-shaped corner sofa, suitable for large living rooms.",
+    "product_location": "Binh Duong",
+    "price": 39999
+  },
+  {
+    "title": "Sofa-H6",
+    "supplier": "Di An Furniture Company.",
+    "image_url": "https://flexhouse.vn/wp-content/uploads/2023/07/Ghe-sofa-boc-da-phong-cach-Industrial-T0212-6.jpg",
+    "description": "Single sofa, made of luxurious leather, suitable for company living rooms, coffee shops.",
+    "product_location": "Binh Duong",
+    "price": 49999
+  },
+  {
+    "title": "floor table-N3",
+    "supplier": "Dong Nai Wood Factory",
+    "image_url": "https://noithatmanhhe.vn/media/34627/ban-an-ngoi-bet-23.jpg",
+    "description": "Compact wooden floor table, suitable for work from home, enjoying tea.",
+    "product_location": "Dong Nai",
+    "price": 3999
+  },
+  {
+    "title": "floor table-N6",
+    "supplier": "Dong Nai Wood Factory",
+    "image_url": "https://noithatnkw.com/wp-content/uploads/2021/12/257956351_203227498646410_5079601554642210409_n.jpg",
+    "description": "Compact floor table, suitable for small spaces, apartments.",
+    "product_location": "Dong Nai",
+    "price": 3999
+  }
+]

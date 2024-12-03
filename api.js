@@ -1,11 +1,12 @@
 import express from "express";
-import { greetRouter } from "./api/greet.router.js";
-import { loginRouter } from "./api/login.router.js";
-import { registerRouter } from "./api/register.router.js";
+import { loginRouter } from "./api/login.js";
+import { registerRouter } from "./api/register.js";
+import { productRouter } from "./api/product.js";
+import { profileRouter } from "./api/profile.js";
 
 export const apiRouter = express.Router();
 
-apiRouter
-  .use("/greet", greetRouter)
-  .use("/login", loginRouter)
-  .use("/register", registerRouter);
+apiRouter.use("/login", loginRouter);
+apiRouter.use("/register", registerRouter);
+apiRouter.use("/product", productRouter);
+apiRouter.use("/profile", profileRouter);
