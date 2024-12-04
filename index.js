@@ -6,6 +6,8 @@ import { apiRouter } from "./api.js";
 import { sequelize } from "./database.js";
 import { Product } from "./models/product.js";
 import { User } from "./models/user.js";
+import { Order, OrderedItem } from "./models/order.js";
+import { Cart } from "./models/cart.js";
 
 initializeSequelize()
   .then(() => {
@@ -61,6 +63,52 @@ export async function initializeSequelize() {
     ];
     for (const user of users) {
       await User.create(user);
+    }
+    const orders = [
+      {
+        user_id: 1,
+        date: new Date(Date.now()),
+        address: "Quang Ngai, Vietnam",
+        done: true,
+        total: 19994,
+      },
+    ];
+    for (const order of orders) {
+      await Order.create(order);
+    }
+    const orderedItems = [
+      {
+        order_id: 1,
+        product_id: 1,
+        count: 1,
+        total_price: 2999,
+      },
+      {
+        order_id: 1,
+        product_id: 2,
+        count: 2,
+        total_price: 7998,
+      },
+      {
+        order_id: 1,
+        product_id: 3,
+        count: 3,
+        total_price: 8997,
+      },
+    ];
+    for (const orderedItem of orderedItems) {
+      await OrderedItem.create(orderedItem);
+    }
+    const carts = [
+      {
+        user_id: 1,
+        product_id: 6,
+        count: 1,
+        total_price: 1599,
+      },
+    ];
+    for (const cart of carts) {
+      await Cart.create(cart);
     }
   }
   return sequelize;
