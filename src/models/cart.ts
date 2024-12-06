@@ -1,7 +1,7 @@
 import { DataTypes, Model } from "sequelize";
 import { sequelize } from "../database.js";
-import { User } from "./user.js";
 import { Product } from "./product.js";
+import { User } from "./user.js";
 
 export class Cart extends Model {}
 

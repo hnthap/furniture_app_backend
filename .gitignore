@@ -1,3 +1,4 @@
 .env
 assets/*.db
 node_modules/
+dist/

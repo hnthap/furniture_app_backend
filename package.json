@@ -1,11 +1,14 @@
 {
   "name": "backend",
   "version": "0.1.0",
-  "main": "index.js",
-  "type": "module",
+  "main": "dist/index.js",
+  "type": "commonjs",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node --watch index.js",
+    "start": "node dist/index.js",
+    "build": "tsc",
+    "type-dev": "tsc --watch",
+    "node-dev": "node --watch dist/index.js",
+    "dev": "concurrently -c auto npm:node-dev npm:type-dev",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,5 +22,12 @@
     "http-status-codes": "^2.3.0",
     "sequelize": "^6.37.5",
     "sqlite3": "^5.1.7"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.17",
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.1",
+    "concurrently": "^9.1.0",
+    "typescript": "^5.7.2"
   }
 }

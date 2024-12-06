@@ -10,5 +10,5 @@ User.init(
     location: DataTypes.TEXT,
     password: DataTypes.TEXT,
   },
-  { sequelize, modelName: "user" }
+  { sequelize, modelName: "user", timestamps: true }
 );

@@ -1,8 +1,9 @@
 import { StatusCodes } from "http-status-codes";
 import { Op } from "sequelize";
 import { Product } from "../models/product.js";
+import { BaseController } from "./base.js";
 
-export const ProductController = {
+export const ProductController = new BaseController({
   new: async (req, res) => {
     const { title, supplier, base64, description, product_location, price } =
       req.body;
@@ -15,14 +16,10 @@ export const ProductController = {
         product_location,
         price,
       });
-      res
-        .status(StatusCodes.CREATED)
-        .json({ message: "product created successfully" });
+      res.status(StatusCodes.CREATED);
     } catch (error) {
       console.error(`failed to create product, reason: ${error}`);
-      res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json({ message: `failed to create product` });
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   },
   all: async (req, res) => {
@@ -30,9 +27,7 @@ export const ProductController = {
       const products = (await Product.findAll()).sort();
       res.status(StatusCodes.OK).json({ products });
     } catch {
-      res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json({ message: "failed to get all products" });
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   },
   get: async (req, res) => {
@@ -41,9 +36,7 @@ export const ProductController = {
       const product = await Product.findByPk(id);
       res.status(StatusCodes.OK).json({ product });
     } catch (error) {
-      res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json({ message: `failed to get product ID ${id}` });
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   },
   search: async (req, res) => {
@@ -61,9 +54,7 @@ export const ProductController = {
       });
       res.status(StatusCodes.OK).json({ products });
     } catch {
-      res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json({ message: "failed to find products" });
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   },
   delete: async (req, res) => {
@@ -71,19 +62,13 @@ export const ProductController = {
       const id = parseInt(req.params.id);
       const rowCount = await Product.destroy({ where: { id } });
       if (rowCount === 0) {
-        res
-          .status(StatusCodes.NO_CONTENT)
-          .json({ message: "delete done, but no rows were affected" });
+        res.status(StatusCodes.NOT_FOUND);
       } else {
-        res
-          .status(StatusCodes.OK)
-          .json({ message: `successfully deleted product ID ${id}` });
+        res.status(StatusCodes.OK);
       }
     } catch (error) {
       console.error(`failed to delete products, reason: ${error}`);
-      res
-        .status(StatusCodes.INTERNAL_SERVER_ERROR)
-        .json({ message: "failed to delete products" });
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
     }
   },
-};
+});

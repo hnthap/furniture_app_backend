@@ -3,4 +3,4 @@ import { UserController } from "../controllers/user.js";
 
 export const loginRouter = express.Router();
 
-loginRouter.post("/", UserController.login);
+loginRouter.post("/", UserController.call("login"));

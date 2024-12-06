@@ -10,7 +10,6 @@ Order.init(
     user_id: { type: DataTypes.NUMBER, allowNull: false },
     date: { type: DataTypes.DATEONLY, allowNull: false },
     address: { type: DataTypes.STRING, allowNull: false },
-    // in_progress: { type: DataTypes.BOOLEAN, allowNull: false },
     done: { type: DataTypes.BOOLEAN, allowNull: false },
     total: { type: DataTypes.NUMBER, allowNull: false },
   },
