@@ -14,7 +14,7 @@ export const OrderController = new BaseController({
         address === undefined ||
         cartIds === undefined
       ) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const where = { user_id: userId, id: { [Op.in]: cartIds } };
@@ -50,14 +50,14 @@ export const OrderController = new BaseController({
       await Cart.destroy({ where });
       res.status(StatusCodes.OK).json({ order, items: orderedItems, products });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   getByUser: async (req, res) => {
     try {
       const { userId } = req.params;
       if (userId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const orders = await Order.findAll({
@@ -69,14 +69,14 @@ export const OrderController = new BaseController({
       });
       res.status(StatusCodes.OK).json({ orders });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   details: async (req, res) => {
     try {
       const { orderId } = req.params;
       if (orderId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const order = await Order.findByPk(orderId);
@@ -89,7 +89,7 @@ export const OrderController = new BaseController({
       );
       res.status(StatusCodes.OK).json({ order, items, products });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
 });

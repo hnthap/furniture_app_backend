@@ -8,7 +8,7 @@ export const FavoriteController = new BaseController({
     try {
       const { userId } = req.params;
       if (userId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const favorites = await FavoriteProduct.findAll({
@@ -23,14 +23,14 @@ export const FavoriteController = new BaseController({
       );
       res.status(StatusCodes.OK).json({ products });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   check: async (req, res) => {
     try {
       const { userId, productId } = req.params;
       if (userId === undefined || productId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const count = await FavoriteProduct.count({
@@ -38,14 +38,14 @@ export const FavoriteController = new BaseController({
       });
       res.status(StatusCodes.OK).json({ favorite: count !== 0 });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   new: async (req, res) => {
     try {
       const { userId, productId } = req.params;
       if (userId === undefined || productId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const data = { user_id: userId, product_id: productId };
@@ -56,14 +56,14 @@ export const FavoriteController = new BaseController({
       res.status(StatusCodes.OK).json({});
     } catch (error) {
       console.error(`failed to favorite a product, reason: ${error}`);
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   delete: async (req, res) => {
     try {
       const { userId, productId } = req.params;
       if (userId === undefined || productId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const data = { user_id: userId, product_id: productId };
@@ -84,7 +84,7 @@ export const FavoriteController = new BaseController({
       }
     } catch (error) {
       console.error(`failed to unfavorite a product, reason: ${error}`);
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
 });

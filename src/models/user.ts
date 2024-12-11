@@ -9,6 +9,14 @@ User.init(
     email: DataTypes.TEXT,
     location: DataTypes.TEXT,
     password: DataTypes.TEXT,
+    avatar_base64: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    cover_base64: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   { sequelize, modelName: "user", timestamps: true }
 );

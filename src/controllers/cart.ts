@@ -9,13 +9,13 @@ export const CartController = new BaseController({
       let { userId: user_id, productId: product_id, count } = req.body;
       count = Number.parseInt(count);
       if (count <= 0 || user_id === undefined || product_id === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const item = await Cart.findOne({ where: { user_id, product_id } });
       const product = await Product.findByPk(product_id);
       if (product === null) {
-        res.status(StatusCodes.NOT_FOUND);
+        res.status(StatusCodes.NOT_FOUND).json({});
         return;
       }
       const price = product.getDataValue("price");
@@ -30,35 +30,35 @@ export const CartController = new BaseController({
         res.status(StatusCodes.OK).json(item);
       }
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   delete: async (req, res) => {
     try {
       const { userId, productId } = req.params;
       if (userId === undefined || userId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const user_id = Number.parseInt(userId);
       const product_id = Number.parseInt(productId);
       const rowCount = await Cart.destroy({ where: { user_id, product_id } });
       if (rowCount === 0) {
-        res.status(StatusCodes.NOT_FOUND);
+        res.status(StatusCodes.NOT_FOUND).json({});
       } else {
         res
           .status(StatusCodes.OK)
           .json({ message: `successfully deleted cart item ID` });
       }
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   get: async (req, res) => {
     try {
       const { userId: user_id } = req.params;
       if (user_id === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const items = (await Cart.findAll({ where: { user_id } })).sort();
@@ -71,35 +71,35 @@ export const CartController = new BaseController({
       );
       res.status(StatusCodes.OK).json({ items, products });
     } catch {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   count: async (req, res) => {
     try {
       const { userId, productId } = req.params;
       if (userId === undefined || productId === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const count = await Cart.count({
         where: { user_id: userId, product_id: productId },
       });
-      res.status(StatusCodes.OK).json({ count });
+      res.status(StatusCodes.OK).json({ count }).json({});
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   countTitles: async (req, res) => {
     try {
       const { userId: user_id } = req.params;
       if (user_id === undefined) {
-        res.status(StatusCodes.BAD_REQUEST);
+        res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
       const count = await Cart.count({ where: { user_id } });
       res.status(StatusCodes.OK).json({ count });
     } catch {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
 });

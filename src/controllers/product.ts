@@ -16,10 +16,10 @@ export const ProductController = new BaseController({
         product_location,
         price,
       });
-      res.status(StatusCodes.CREATED);
+      res.status(StatusCodes.CREATED).json({});
     } catch (error) {
       console.error(`failed to create product, reason: ${error}`);
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   all: async (req, res) => {
@@ -27,7 +27,7 @@ export const ProductController = new BaseController({
       const products = (await Product.findAll()).sort();
       res.status(StatusCodes.OK).json({ products });
     } catch {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   get: async (req, res) => {
@@ -36,7 +36,7 @@ export const ProductController = new BaseController({
       const product = await Product.findByPk(id);
       res.status(StatusCodes.OK).json({ product });
     } catch (error) {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   search: async (req, res) => {
@@ -54,7 +54,7 @@ export const ProductController = new BaseController({
       });
       res.status(StatusCodes.OK).json({ products });
     } catch {
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   delete: async (req, res) => {
@@ -62,13 +62,13 @@ export const ProductController = new BaseController({
       const id = parseInt(req.params.id);
       const rowCount = await Product.destroy({ where: { id } });
       if (rowCount === 0) {
-        res.status(StatusCodes.NOT_FOUND);
+        res.status(StatusCodes.NOT_FOUND).json({});
       } else {
-        res.status(StatusCodes.OK);
+        res.status(StatusCodes.OK).json({});
       }
     } catch (error) {
       console.error(`failed to delete products, reason: ${error}`);
-      res.status(StatusCodes.INTERNAL_SERVER_ERROR);
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
 });
