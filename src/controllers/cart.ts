@@ -84,7 +84,7 @@ export const CartController = new BaseController({
       const count = await Cart.count({
         where: { user_id: userId, product_id: productId },
       });
-      res.status(StatusCodes.OK).json({ count }).json({});
+      res.status(StatusCodes.OK).json({ count });
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
