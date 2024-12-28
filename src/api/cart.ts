@@ -10,3 +10,4 @@ cartRouter.get("/count/:userId/:productId", CartController.call("count"));
 cartRouter.post("/", CartController.call("add"));
 
 cartRouter.delete("/:userId/:productId", CartController.call("delete"));
+cartRouter.delete("/:userId", CartController.call("deleteAll"));

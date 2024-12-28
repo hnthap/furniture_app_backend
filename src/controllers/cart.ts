@@ -30,13 +30,14 @@ export const CartController = new BaseController({
         res.status(StatusCodes.OK).json(item);
       }
     } catch (error) {
+      console.error(error);
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
     }
   },
   delete: async (req, res) => {
     try {
       const { userId, productId } = req.params;
-      if (userId === undefined || userId === undefined) {
+      if (userId === undefined || productId === undefined) {
         res.status(StatusCodes.BAD_REQUEST).json({});
         return;
       }
@@ -49,6 +50,28 @@ export const CartController = new BaseController({
         res
           .status(StatusCodes.OK)
           .json({ message: `successfully deleted cart item ID` });
+      }
+    } catch (error) {
+      res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});
+    }
+  },
+  deleteAll: async (req, res) => {
+    try {
+      const { userId } = req.params;
+      if (userId === undefined) {
+        res.status(StatusCodes.BAD_REQUEST).json({});
+        return;
+      }
+      const user_id = Number.parseInt(userId);
+      const rowCount = await Cart.destroy({ where: { user_id } });
+      if (rowCount === 0) {
+        res.status(StatusCodes.NOT_FOUND).json({});
+      } else {
+        res
+          .status(StatusCodes.OK)
+          .json({
+            message: `successfully deleted all carts of user ID ${user_id}`,
+          });
       }
     } catch (error) {
       res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({});

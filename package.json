@@ -8,7 +8,7 @@
     "build": "tsc",
     "type-dev": "tsc --watch",
     "node-dev": "node --watch dist/index.js",
-    "dev": "concurrently -c auto npm:node-dev npm:type-dev",
+    "dev": "concurrently -c auto npm:type-dev npm:node-dev --kill-others",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
